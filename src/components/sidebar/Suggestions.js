@@ -6,7 +6,7 @@ import { getSuggestedProfiles } from "../../services/firebase";
 import SuggestedProfile from './SuggestedProfile';
 
 
-export default function Suggestions ({ userId, following }) {
+export default function Suggestions ({ userId, following, loggedInUserDocId }) {
 
   const [ profiles, setProfiles ] = useState(null);
 
@@ -41,10 +41,11 @@ export default function Suggestions ({ userId, following }) {
         {profiles.map((profile)=> (
           <SuggestedProfile 
             key={profile.docId}
-            userDocId={profile.docId}
+            spDocId={profile.docId}
             username={profile.username}
             profileId={profile.userId}
             userId={userId}
+            loggedInUserDocId={loggedInUserDocId}
           />
         ))}
       </div>
@@ -54,5 +55,6 @@ export default function Suggestions ({ userId, following }) {
  
 Suggestions.propTypes = {
   userId: propTypes.string,
-  following: propTypes.array
+  following: propTypes.array,
+  loggedInUserDocId: propTypes.string
 }

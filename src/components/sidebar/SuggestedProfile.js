@@ -1,9 +1,18 @@
 import React, { useState } from "react";
-import propTypes from "prop-types";
+import propTypes, { func } from "prop-types";
 import { Link } from "react-router-dom";
 
-function SuggestedProfile({ userDocId, username, profileId, userId }) {
+function SuggestedProfile({ spDocId, username, profileId, userId, loggedInUserDocId }) {
   const [followed, setFollowed] = useState(false);
+
+  async function handleFollowUser() {
+    setFollowed(true);
+
+    //firebase: create 2 services(functions)
+    //update the following array of the logged in user (in this case, my profile)
+    //update the followers array of the user who has been followed
+
+  }
 
   return !followed ? (
     <div className="flex flex-row items-center align-items justify-between">
@@ -17,15 +26,21 @@ function SuggestedProfile({ userDocId, username, profileId, userId }) {
           <p className="font-bold text-sm">{username}</p>
         </Link>
       </div>
+        <button 
+        className="text-xs font-bold text-blue-medium"
+        type="button"
+        onClick={handleFollowUser}
+        >Follow</button>
     </div>
   ) : null;
 }
 
 SuggestedProfile.propTypes = {
-  userDocId: propTypes.string.isRequired,
+  spDocId: propTypes.string.isRequired,
   username: propTypes.string.isRequired,
   profileId: propTypes.string.isRequired,
   userId: propTypes.string.isRequired,
+  loggedInUserDocId: propTypes.string.isRequired,
 };
 
 export default SuggestedProfile;
