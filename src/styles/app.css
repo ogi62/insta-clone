@@ -478,11 +478,11 @@ Ensure the default browser behavior of the `hidden` attribute.
 .mt-5 {
   margin-top: 1.25rem;
 }
-.mb-6 {
-  margin-bottom: 1.5rem;
-}
 .mt-4 {
   margin-top: 1rem;
+}
+.mb-6 {
+  margin-bottom: 1.5rem;
 }
 .flex {
   display: flex;
